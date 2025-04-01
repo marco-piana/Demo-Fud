@@ -1,0 +1,13 @@
+{
+    "name": "akaunting/tabsluxe-template",
+    "description": "",
+    "authors": [{
+        "name": "Akaunting",
+        "email": "info@akaunting.com"
+    }],
+    "autoload": {
+        "psr-4": {
+            "Modules\\TabsLuxeTemplate\\": ""
+        }
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "alias": "tablereservations",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "beforeMainMenus":true,
+    "nameSpace": "Modules\\Tablereservations",
+    "hasDashboardInfo":true,
+    "providers": [
+        "Modules\\Tablereservations\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "global_fields":[
+        { 
+            "separator": "Notification settings",
+            "title": "Channel for sending notifications", 
+            "key": "NOTIFICATIONS_CHANNEL_TABLERESERVATIONS", 
+            "value": "none",
+            "ftype": "select", 
+            "data": {"none":"No notifications","twilio":"Twilio SMS","whatsapp":"Whatsapp","twilioandwhatsapp":"Twilio SMS and Whatsapp"} 
+        },
+        {
+            "title":"Send notification that reservation is received",
+            "key":"NOTIFY_RESERVATION_RECEIVED",
+            "value":true,
+            "ftype":"bool"
+        },
+        {
+            "title":"Send notification that reservation is rejected",
+            "key":"NOTIFY_RESERVATION_REJECTED",
+            "value":false,
+            "ftype":"bool"
+        },
+        {
+            "separator": "Twilio SMS Notification settings",
+            "title": "Twilio Account SID",
+            "key": "TWILIO_ACCOUNT_SID",
+            "ftype": "input",
+            "value": ""
+        },
+        {
+            "title": "Twilio Auth Token",
+            "key": "TWILIO_AUTH_TOKEN",
+            "ftype": "input",
+            "value": ""
+        },
+        {
+            "title": "Twilio Phone number",
+            "key": "TWILIO_PHONE_NUMBER",
+            "ftype": "input",
+            "value": ""
+        },
+        {
+            "separator":"WhatsApp Notifications",
+            "title": "WhatsBox Project URL",
+            "key": "WHATS_BOX_URL",
+            "ftype": "input",
+            "value":""
+        },
+        {
+            "title": "WhatsBox API Token",
+            "key": "WHATS_BOX_API_TOKEN",
+            "ftype": "input",
+            "value":""
+        },
+        {
+            "title":"Campaign ID for confirmation",
+            "key":"CAMPAING_ID_CONFIRM",
+             "ftype": "input",
+            "value":""
+        },
+        {
+            "title":"Campaign ID for rejections",
+            "key":"CAMPAING_ID_REJECT",
+             "ftype": "input",
+            "value":""
+        } 
+    ],
+    "ownermenus":[
+        {       
+            "name":"Reservation Panel",
+            "priority":1,
+            "icon":"ni ni-tablet-button text-blue",
+            "route":"tablereservations.panel"
+        },
+        {       
+            "name":"Reservations",
+            "priority":1,
+            "icon":"ni ni-calendar-grid-58 text-green",
+            "route":"tablereservations.index"
+        },
+        {
+            "id":"customersMenu",
+            "name":"Customers",
+            "icon":"ni ni-badge text-green",
+            "route":"contacts.index",
+            "isGroup":true,
+            "menus":[ 
+                {
+                    "name":"Customers list",
+                    "icon":"ni ni-badge text-green",
+                    "route":"contacts.index"
+                },
+                {
+                    "name":"Fields",
+                    "icon":"ni ni-bullet-list-67 text-primary",
+                    "route":"contacts.fields.index"
+                },
+                {
+                    "name":"Groups",
+                    "icon":"ni ni-collection text-primary",
+                    "route":"contacts.groups.index"
+                },
+                {
+                    "name":"Import",
+                    "icon":"ni ni-cloud-download-95 text-primary",
+                    "route":"contacts.import.index"
+                }
+            ]
+        }
+    ]
+}

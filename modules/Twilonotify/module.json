@@ -1,0 +1,13 @@
+{
+    "alias": "twilonotify",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Twilonotify\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

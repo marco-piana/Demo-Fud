@@ -1,0 +1,3 @@
+Point 2/
+    php artisan make:middleware ForceLoginIfRequired
+    php artisan make:middleware CheckForceLogin

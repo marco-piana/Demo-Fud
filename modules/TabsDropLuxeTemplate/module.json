@@ -1,0 +1,16 @@
+{
+    "alias": "tabdropluxe-template",
+    "name": "Tab Drop Luxe Template",
+    "version": "1.5",
+    "isTemplateModule": true,
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\TabsDropLuxeTemplate\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

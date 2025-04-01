@@ -1,0 +1,50 @@
+# Laravel folders and files to ignore
+
+# Ignoring .env and environment config files
+/.env
+/.env.*
+
+# Ignoring Composer dependencies
+/vendor/
+
+# Ignoring cache and storage
+/node_modules/
+npm-debug.log
+yarn-error.log
+
+# Laravel generated files and folders
+/public/storage
+/storage/*.key
+/storage/app
+/storage/framework/*
+/storage/logs/*
+/bootstrap/cache/
+
+# Ignoring IDE and editor-specific files
+/.idea
+/.vscode
+*.sublime-project
+*.sublime-workspace
+
+# Ignoring OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignoring additional files and backup files
+*.bak
+*.backup
+*.swp
+*.tmp
+*.log
+*.log.*
+
+# Ignoring Laravel Mix and other generated files
+/public/hot
+/public/uploads
+/public/css/app.css
+/public/js/app.js
+/public/mix-manifest.json
+/public/js/*.js.map
+/public/css/*.css.map
+/node_modules
+yarn.lock

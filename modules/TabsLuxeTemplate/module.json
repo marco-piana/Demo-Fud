@@ -1,0 +1,16 @@
+{
+    "alias": "tabluxe-template",
+    "name": "Tab Luxe Template",
+    "version": "1.5",
+    "isTemplateModule": true,
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\TabsLuxeTemplate\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

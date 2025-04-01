@@ -1,0 +1,23 @@
+{
+    "alias": "webreswidget",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Webreswidget\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "ownermenus":[
+        {
+            "name":"Reservation Widget",
+            "icon":"ni ni-world-2 text-green",
+            "route":"webreswidget.edit",
+            "color":"#2dce89"
+        }
+    ],
+    "vendor_fields":[
+        ]
+}

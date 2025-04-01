@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+
+    @yield('title')
+    <title>{{ config('app.name', 'FoodTiger') }}</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Fonts -->
+    <link href="{{ asset('css') }}/gfonts.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <!-- Argon CSS -->
+        <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+        <!-- Argon CSS -->
+        <link type="text/css" href="{{ asset('custom') }}/css/custom.css" rel="stylesheet">
+        <!-- Select2 -->
+        <link type="text/css" href="{{ asset('custom') }}/css/select2.min.css" rel="stylesheet">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="{{ asset('vendor') }}/jasny/css/jasny-bootstrap.min.css">
+        <!-- Flatpickr datepicker -->
+        <link rel="stylesheet" href="{{ asset('vendor') }}/flatpickr/flatpickr.min.css">
+
+         <!-- Font Awesome Icons -->
+        <link href="{{ asset('argonfront') }}/css/font-awesome.css" rel="stylesheet" />
+
+        <!-- Lottie -->
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
+        <!-- Range datepicker -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor') }}/daterangepicker/daterangepicker.css" />
+
+        @yield('head')
+        @laravelPWA
+        @include('layouts.rtl')
+
+        <!-- Custom CSS defined by admin -->
+        <link type="text/css" href="{{ asset('byadmin') }}/back.css" rel="stylesheet">
+
+        {{-- Brij Negi Update --}}
+        <style>
+            .popup {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 20px;
+                background: #fff;
+                border: 1px solid #ccc;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                text-align: center;
+            }
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            .popup button {
+                margin: 10px;
+                padding: 10px 20px;
+                border: none;
+                background: #007bff;
+                color: #fff;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .popup button:hover {
+                background: #0056b3;
+            }
+            .popup button.no {
+                background: #dc3545;
+            }
+            .popup button.no:hover {
+                background: #a71d2a;
+            }
+        </style>
+
+    </head>
+    <body class="{{ $class ?? '' }}">
+        @auth()
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            @if (\Request::route()->getName() != 'order.success' && \Request::route()->getName() != 'selectpay')
+                @include('layouts.navbars.sidebar')
+            @endif
+        @endauth
+
+        <div class="main-content">
+            @include('layouts.navbars.navbar')
+            @yield('content')
+        </div>
+        {{-- Brij Negi Update --}}
+        <div class="overlay" id="overlay"></div>
+        <div class="popup" id="popup">
+            @if (auth()->user())
+            <p>{{ __('Dear') }} {{ auth()->user()->name }}, {{ __('the selected function is not included in your subscription. Please press the button below to view the list of plans and choose the one that best suits your needs.') }}</p>
+            @endif
+            <button id="redirectButton">GO TO PLANS LIST</button>
+            {{-- <button id="cancelButton" class="no">No</button> --}}
+        </div>
+
+        @guest()
+            @include('layouts.footers.guest')
+        @endguest
+
+        <!-- Commented because navtabs includes same script -->
+        <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+
+        <script src="{{ asset('argonfront') }}/js/core/popper.min.js" type="text/javascript"></script>
+        <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+        @yield('topjs')
+
+        <script>
+            var t="<?php echo 'translations' . App::getLocale(); ?>";
+           window.translations = {!! Cache::get('translations' . App::getLocale(), '[]') !!};
+           
+           
+        </script>
+
+        <!-- Navtabs -->
+        <script src="{{ asset('argonfront') }}/js/core/jquery.min.js" type="text/javascript"></script>
+
+
+        <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <!-- Nouslider -->
+        <script src="{{ asset('argon') }}/vendor/nouislider/distribute/nouislider.min.js" type="text/javascript"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="{{ asset('vendor') }}/jasny/js/jasny-bootstrap.min.js"></script>
+        <!-- Custom js -->
+        <script src="{{ asset('custom') }}/js/orders.js"></script>
+         <!-- Custom js -->
+        <script src="{{ asset('custom') }}/js/mresto.js"></script>
+        <!-- AJAX -->
+
+        <!-- SELECT2 -->
+        <script src="{{ asset('custom') }}/js/select2.js"></script>
+        <script src="{{ asset('vendor') }}/select2/select2.min.js"></script>
+
+        <!-- DATE RANGE PICKER -->
+        <script type="text/javascript" src="{{ asset('vendor') }}/moment/moment.min.js"></script>
+        <script type="text/javascript" src="{{ asset('vendor') }}/daterangepicker/daterangepicker.min.js"></script>
+
+        <!-- All in one -->
+        <script src="{{ asset('custom') }}/js/js.js?id={{ config('version.version') }}"></script>
+
+        <!-- Argon JS -->
+        <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+
+         <!-- Import Vue -->
+        <script src="{{ asset('vendor') }}/vue/vue.js"></script>
+
+        <!-- Import AXIOS --->
+        <script src="{{ asset('vendor') }}/axios/axios.min.js"></script>
+
+        <!-- Flatpickr datepicker -->
+        <script src="{{ asset('vendor') }}/flatpickr/flatpickr.js"></script>
+
+        <!-- Notify JS -->
+        <script src="{{ asset('custom') }}/js/notify.min.js"></script>
+
+         <!-- Cart custom sidemenu -->
+        <script src="{{ asset('custom') }}/js/cartSideMenu.js"></script>
+
+
+        <script>
+            var ONESIGNAL_APP_ID = "{{ config('settings.onesignal_app_id') }}";
+            var USER_ID = '{{ auth()->user() && auth()->user() ? auth()->user()->id : '' }}';
+            var PUSHER_APP_KEY = "{{ config('broadcasting.connections.pusher.key') }}";
+            var PUSHER_APP_CLUSTER = "{{ config('broadcasting.connections.pusher.options.cluster') }}";
+        </script>
+        @if (auth()->user() != null && auth()->user()->hasRole('staff'))
+            <script>
+                //When staff, use the owner
+                USER_ID = '{{ auth()->user()->restaurant->user_id }}';
+            </script>
+        @endif
+       
+
+        <!-- OneSignal -->
+        @if (strlen(config('settings.onesignal_app_id')) > 4)
+            <script src="{{ asset('vendor') }}/OneSignalSDK/OneSignalSDK.js" async=""></script>
+            <script src="{{ asset('custom') }}/js/onesignal.js"></script>
+        @endif
+
+        @stack('js')
+        @yield('js')
+
+        <script src="{{ asset('custom') }}/js/rmap.js"></script>
+
+         <!-- Pusher -->
+         @if (strlen(config('broadcasting.connections.pusher.app_id')) > 2)
+            <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+            <script src="{{ asset('custom') }}/js/pusher.js"></script> @endif
+            
+            {{-- Brij Negi Update --}}
+            <script>
+                const popup = document.getElementById('popup');
+                const overlay = document.getElementById('overlay');
+                const popupLink = document.getElementById('popupLink');
+                const redirectButton = document.getElementById('redirectButton');
+                const cancelButton = document.getElementById('cancelButton');
+
+                popupLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    popup.style.display = 'block';
+                    overlay.style.display = 'block';
+                });
+
+                redirectButton.addEventListener('click', function() {
+                    closePopup();
+                    window.location.href = '{{ route('plans.current') }}';
+                });
+
+                // cancelButton.addEventListener('click', function() {
+                //     alert('You clicked No!');
+                //     closePopup();
+                // });
+
+                function closePopup() {
+                    popup.style.display = 'none';
+                    overlay.style.display = 'none';
+                }
+            </script>
+        <!-- Custom JS defined by admin -->
+        <?php echo file_get_contents(base_path('public/byadmin/back.js')); ?>
+    </body>
+</html>

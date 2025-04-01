@@ -1,0 +1,66 @@
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+.right-0 {
+    left: 0 !important;
+    right: auto !important;
+}
+
+.info,
+.dropdown>.dropdown-menu>.dropdown-menu-title,
+.modal-title,
+.item-offer-horizontal>.info>p,
+#modalDescription,
+.select2-container--default .select2-search--inline .select2-search__field {
+    text-align: right !important;
+}
+
+.dropdown>a::after {
+    margin-left: 0;
+    margin-right: var(--gap-sm);
+}
+
+.btn_hero:not(:first-of-type) {
+    margin-left: 0 !important;
+    margin-right: 1rem !important;
+}
+
+h5.label-variants,
+#exrtas-area h5 {
+    margin-right: 0 !important;
+}
+
+.checkout .items .close {
+    left: auto !important;
+    right: -0.5rem !important;
+}
+
+#cartList .info {
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+.checkout #totalPrices span {
+    margin-left: 0.5rem;
+}
+
+.checkout h4 {
+    text-align: right;
+}
+
+.checkout .payment-select .custom-radio .checkmark {
+    right: auto;
+    left: 1rem;
+}
+
+input#phone {
+    padding-right: 1rem;
+}
+
+.empty-page .table picture,
+a.back-button {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+}

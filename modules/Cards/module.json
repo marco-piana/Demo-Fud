@@ -1,0 +1,143 @@
+{
+    "alias": "cards",
+    "version": "2.0",
+    "nameSpace": "Modules\\Cards",
+    "description": "",
+    "hasDashboardInfo":true,
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Cards\\Providers\\Main",
+        "Modules\\Cards\\Providers\\Event"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "vendor_fields":[
+        {
+            "separator":"Loyalty program",
+            "title": "Enable loyalty program",
+            "key":"enable_loyalty",
+            "ftype": "bool",
+            "value": false
+        },
+        { 
+            "title": "Heading",
+            "key": "loyalty_heading",
+            "ftype": "input",
+            "value":"earn points for every purchase"
+        },
+        {
+            
+            "title": "Subtitle",
+            "key": "loyalty_subtitle",
+            "ftype": "input",
+            "value":"Join our loyalty program and"
+        },
+        {
+            "key":"initial_loyalty_text1",
+            "ftype":"input",
+            "title":"Join now text 1",
+            "value":"Unlock exclusive discounts, rewards, and special offers by joining our loyalty program today!"
+        },
+        {
+            "key":"initial_loyalty_text2",
+            "ftype":"input",
+            "title":"Join now text 2",
+            "value":"As a member, you'll earn points for every purchase you make that can be redeemed for discounts on future purchases."
+        },
+        {
+            "title": "Webhook",
+            "key": "loyalty_webhook",
+            "ftype": "input",
+            "value":""
+        },
+        {
+            "key":"initial_loyalty_points",
+            "ftype":"input",
+            "type":"number",
+            "title":"Initial points",
+            "value":"0"
+        }
+        
+    ],
+    "clientmenus":[
+        {
+            "name":"Dasboard",
+            "icon":"ni ni-tv-2 text-primary",
+            "route":"home"
+        },
+        {
+            "name":"Transactions",
+            "icon":"ni ni-credit-card text-red",
+            "route":"loyalty.movments.peruser"
+        },
+        {
+            "name":"Awards",
+            "icon":"ni ni-trophy text-green",
+            "route":"loyaltyawards.peruser"
+        }
+
+
+        
+    ],
+    "staffmenus":[
+        {
+            "name":"Give points",
+            "icon":"ni ni-bold-right text-green",
+            "route":"loyalty.give"
+        },
+        {
+            "name":"Redeem points",
+            "icon":"ni ni-bold-left text-red",
+            "route":"loyalty.remove"
+        },
+        {
+            "name":"Customers",
+            "icon":"ni ni-credit-card text-blue",
+            "route":"loyalty.cards.index"
+        }
+    ],
+    "ownermenus":[
+        {
+            "name":"Give points",
+            "icon":"ni ni-bold-right text-green",
+            "route":"loyalty.give"
+        },
+        {
+            "name":"Redeem points",
+            "icon":"ni ni-bold-left text-red",
+            "route":"loyalty.remove"
+        },
+        {
+            "name":"Customers",
+            "icon":"ni ni-credit-card text-blue",
+            "route":"loyalty.cards.index"
+        },
+        {
+            "name":"Awards",
+            "icon":"ni ni-trophy text-blue",
+            "route":"loyaltyawards.index"
+        },
+        {
+            "id":"loyalty",
+            "name":"Loyalty Landing",
+            "icon":"ni ni-trophy text-blue",
+            "route":"clients.index",
+            "isGroup":true,
+            "menus":[ 
+                {
+                    "name":"FAQ",
+                    "icon":"ni ni-support-16 text-red",
+                    "route":"loyaltyfaq.index"
+                }
+            ]
+        },
+        {
+            "name":"Points distribution",
+            "icon":"ni ni-money-coins text-red",
+            "route":"loyaltypoints.index"
+        }
+    ]
+}
